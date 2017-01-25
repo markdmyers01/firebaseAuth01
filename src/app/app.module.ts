@@ -14,12 +14,13 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.service';
 import { routes } from './app.routes';
 
+// Follow tutorial for getting config values
 export const firebaseConfig = {
-  apiKey: "AIzaSyCQS3It-mkP-PaD4OJ-IGGyZqItn_2caeU",
-  authDomain: "angular2auth01.firebaseapp.com",
-  databaseURL: "https://angular2auth01.firebaseio.com",
-  storageBucket: "angular2auth01.appspot.com",
-  messagingSenderId: "342418321903"
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  storageBucket: "",
+  messagingSenderId: ""
 };
 
 @NgModule({

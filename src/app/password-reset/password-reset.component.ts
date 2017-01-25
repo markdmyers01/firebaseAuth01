@@ -25,7 +25,7 @@ export class PasswordResetComponent {
       this.auth.sendPasswordResetEmail(formData.value.email)
         .then((success) => {
           console.log(success); //remove in production
-          this.router.navigate(['/home']);
+          this.router.navigate(['/login']);
           this.errCond = false;
         }).catch(
         (err) => {
