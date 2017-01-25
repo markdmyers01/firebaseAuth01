@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,10 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  state: string = '';
-  error: any;
   
-  constructor(public af: AngularFire,private router: Router) {
+  constructor(public af: AngularFire, private router: Router) {
 
   }
   onSubmit(formData) {
@@ -27,7 +25,6 @@ export class SignupComponent implements OnInit {
       }).catch(
         (err) => {
         console.log(err);
-        this.error = err;
       })
     }
   }

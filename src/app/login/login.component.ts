@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  error: any;
   errCond = false;
 
   constructor(public af: AngularFire, private router: Router) {
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
   // Email/Password Login
   onSubmit(formData) {
     if (formData.valid) {
-      console.log(formData.value);
+      console.log(formData.value); //remove in production
       this.af.auth.login({
         email: formData.value.email,
         password: formData.value.password
@@ -38,66 +37,34 @@ export class LoginComponent implements OnInit {
         }).catch(
         (err) => {
           console.log(err); //remove in production
-          this.error = err;
           this.errCond = true;
         })
     }
   }
 
-  // Google Authentication
-  loginGoogle() {
+  //Provider Logins
+  providerLogin(from: string) {
     this.af.auth.login({
-      provider: AuthProviders.Google,
+      provider: this._getProvider(from),
       method: AuthMethods.Popup,
     }).then(
       (success) => {
         this.router.navigate(['/home']);
       }).catch(
       (err) => {
-        this.error = err;
+        console.log(err);
       })
   }
 
-  //Facebook Authentication
-  loginFacebook() {
-    this.af.auth.login({
-      provider: AuthProviders.Facebook,
-      method: AuthMethods.Popup,
-    }).then(
-      (success) => {
-        this.router.navigate(['/home']);
-      }).catch(
-      (err) => {
-        this.error = err;
-      })
-  }
+  //Get Provider
+  private _getProvider(from: string){
 
-  // Twitter Authentication
-  loginTwitter() {
-    this.af.auth.login({
-      provider: AuthProviders.Twitter,
-      method: AuthMethods.Popup,
-    }).then(
-      (success) => {
-        this.router.navigate(['/home']);
-      }).catch(
-      (err) => {
-        this.error = err;
-      })
-  }
-
-  //GitHub Authentication
-  loginGitHub() {
-    this.af.auth.login({
-      provider: AuthProviders.Facebook,
-      method: AuthMethods.Popup,
-    }).then(
-      (success) => {
-        this.router.navigate(['/home']);
-      }).catch(
-      (err) => {
-        this.error = err;
-      })
+    switch(from){
+      case 'google': return AuthProviders.Google;
+      case 'facebook': return AuthProviders.Facebook;
+      case 'twitter': return AuthProviders.Twitter;    
+      case 'github': return AuthProviders.Github;     
+    }
   }
 
   ngOnInit() {

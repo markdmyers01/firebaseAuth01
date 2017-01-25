@@ -8,11 +8,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { HomeComponent } from './home/home.component';
 
 import { AuthGuard } from './auth.service';
 import { routes } from './app.routes';
-import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCQS3It-mkP-PaD4OJ-IGGyZqItn_2caeU",

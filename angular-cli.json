@@ -1,7 +1,7 @@
 {
   "project": {
     "version": "1.0.0-beta.25.5",
-    "name": "firebase-auth01"
+    "name": "Angular2-Firebase-Authentication"
   },
   "apps": [
     {
